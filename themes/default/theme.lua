@@ -20,32 +20,33 @@ local theme = {}
 
 theme.font          = "SauceCodePro Nerd Font Bold 12"
 
-theme.white = xrdb.color7
-theme.grey = xrdb.color8
-theme.cyan = xrdb.color14
-theme.green = xrdb.color10
-theme.red = xrdb.color9
-theme.yellow = xrdb.color11
-theme.blue = xrdb.color12
+theme.white = xrdb.color15
 theme.black = xrdb.color0
-theme.magenta = xrdb.color5
-theme.cyan = xrdb.color6
 theme.transparent   = "#00000000"
 theme.background = xrdb.background
 theme.foreground = xrdb.foreground
 
-theme.darkgreen = "#6F976B" 
-theme.darkred = "#A25D70"
-theme.darkyellow = "#A69775" 
-theme.darkblue = "#5B78A7" 
-theme.darkmagenta = "#A3819A"
-theme.darkcyan = "#63978E"
+theme.green = xrdb.color10
+theme.red = xrdb.color9
+theme.yellow = xrdb.color11
+theme.blue = xrdb.color12
+theme.magenta = xrdb.color13
+theme.cyan = xrdb.color14
+theme.grey = xrdb.color7
+
+theme.darkgreen = xrdb.color2
+theme.darkred = xrdb.color1
+theme.darkyellow = xrdb.color3
+theme.darkblue = xrdb.color4
+theme.darkmagenta = xrdb.color5
+theme.darkcyan = xrdb.color6
+theme.darkgrey = xrdb.color8
 
 theme.bg_normal     = theme.background
 theme.bg_focus      = theme.black
 theme.bg_urgent     = theme.red
 theme.bg_minimize   = theme.blue
-theme.bg_systray    = theme.white
+theme.bg_systray    = theme.grey
 
 theme.fg_normal     = theme.black
 theme.fg_focus      = theme.foreground 
@@ -65,11 +66,11 @@ end
 theme.taglist_shape = tag_shape
 theme.taglist_spacing = 5
 theme.taglist_shape_border_width = theme.border_width
-theme.taglist_shape_border_color_empty = theme.white
+theme.taglist_shape_border_color_empty = theme.grey
 theme.taglist_shape_border_color_focus = theme.yellow
 theme.taglist_shape_border_color = theme.blue
 theme.taglist_shape_border_color_urgent = theme.red
-theme.taglist_bg_empty = theme.white
+theme.taglist_bg_empty = theme.grey
 theme.taglist_bg_focus = theme.yellow
 theme.taglist_bg_occupied = theme.blue
 theme.taglist_bg_urgent = theme.red
@@ -96,8 +97,10 @@ theme.wibox_height = 35
 
 -- Promptbox and shortkeys
 theme.prompt_fg = theme.white
-theme.prompt_bg = theme.transparent
+theme.prompt_bg = theme.black
 theme.hotkeys_fg = theme.white
+theme.hotkeys_border_color = theme.blue
+theme.hotkeys_shape = gears.shape.rounded_rect
 
 -- There are other variable sets
 -- overriding the default one when
@@ -162,8 +165,6 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "~/.wallpaper"
-
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairh.png"
 theme.layout_fairv = themes_path.."default/layouts/fairv.png"
@@ -193,14 +194,12 @@ theme.volume_lowicon = icons_path .. "volume-low.png"
 theme.volumeicon = icons_path .. "volume.png"
 theme.muteicon = icons_path .. "mute.png"
 theme.clockicon = icons_path .. "clock.png"
-
 theme.playicon = icons_path .. "play.png"
 theme.pauseicon = icons_path .. "pause.png"
 theme.stopicon = icons_path .. "stop.png"
 theme.nexticon = icons_path .. "icons/catppuccin/next.png"
 theme.previcon = icons_path .. "prev.png"
 theme.musicicon = icons_path .. "music.png"
-
 theme.discordicon = icons_path .. "discord.png"
 theme.firefoxicon = icons_path .. "firefox.png"
 theme.terminalicon = icons_path .. "terminal.png"
@@ -211,6 +210,17 @@ theme.wifi_midicon = icons_path .. "wifimid.png"
 theme.wifi_goodicon = icons_path .. "wifigood.png"
 theme.ethicon = icons_path .. "network.png"
 theme.nowifi = icons_path .. "wifi_slash.png"
+
+-- Wallpaper
+theme.wallpaper = string.format("%s/.wallpaper",os.getenv("HOME"))
+local function set_wallpaper(s)
+    gears.wallpaper.maximized(theme.wallpaper, s, false)
+end
+-- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
+screen.connect_signal("property::geometry", set_wallpaper)
+awful.screen.connect_for_each_screen(function(s)
+        set_wallpaper(s)
+end)
 
 -- Generate Awesome icon:
 -- theme.awesome_icon = theme_assets.awesome_icon(

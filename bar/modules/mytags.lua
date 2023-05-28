@@ -85,9 +85,9 @@ awful.screen.connect_for_each_screen(function(s)
 					self:get_children_by_id('role_margin')[1].bottom = 0
 				end
 				local released = function()
-					self:get_children_by_id('role_container')[1].bg = beautiful.grey
 					self:get_children_by_id('role_margin')[1].top = 0
 					self:get_children_by_id('role_margin')[1].bottom = 5
+					self:get_children_by_id('role_container')[1].bg = beautiful.darkgrey
 				end
 				self:connect_signal("button::press", function() pressed() end)
 				self:connect_signal("button::release", function() released() end)
@@ -101,9 +101,9 @@ awful.screen.connect_for_each_screen(function(s)
 					self:get_children_by_id('role_margin')[1].bottom = 0
 				end
 				local released = function()
-					self:get_children_by_id('role_container')[1].bg = beautiful.grey
 					self:get_children_by_id('role_margin')[1].top = 0
 					self:get_children_by_id('role_margin')[1].bottom = 5
+					self:get_children_by_id('role_container')[1].bg = beautiful.darkgrey
 				end
 				self:connect_signal("button::press", function() pressed() end)
 				self:connect_signal("button::release", function() released() end)

@@ -13,7 +13,7 @@ local pressed = function()
 end
 
 local released = function()
-	systraybox_container:set_bg(beautiful.grey)
+	systraybox_container:set_bg(beautiful.darkgrey)
 	systraybox_margin:set_top(0)
 	systraybox_margin:set_bottom(5)
 end

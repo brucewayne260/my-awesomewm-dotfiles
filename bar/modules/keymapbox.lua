@@ -16,7 +16,7 @@ local pressed = function()
 end
 
 local released = function()
-	keymapbox_container:set_bg(beautiful.grey)
+	keymapbox_container:set_bg(beautiful.darkgrey)
 	keymapbox_margin:set_top(0)
 	keymapbox_margin:set_bottom(5)
 end
@@ -42,7 +42,7 @@ keymapbox = wibox.container {
 	-- shape_border_width = beautiful.border_width,
 	-- shape_border_color = beautiful.bg_normal,
 	fg = beautiful.fg_normal,
-	bg = beautiful.white,
+	bg = beautiful.grey,
 }
 
 keymapbox_margin = wibox.container {
