@@ -46,8 +46,6 @@ local cpubox = wibox.container {
 	},
 	layout = wibox.container.background,
 	shape = gears.shape.rounded_rect,
-	-- shape_border_width = beautiful.border_width,
-	-- shape_border_color = beautiful.bg_normal,
 	bg = beautiful.red,
 }
 
@@ -61,7 +59,6 @@ cpubox_container = wibox.container {
 	layout = wibox.container.background,
 	shape = gears.shape.rounded_rect,
 	buttons = awful.button({}, 1, function() awful.spawn("st -e htop")
---		awful.spawn(string.format("mpv %s/sounds/sound.mp3", os.getenv("HOME")), false)
 	end)
 }
 

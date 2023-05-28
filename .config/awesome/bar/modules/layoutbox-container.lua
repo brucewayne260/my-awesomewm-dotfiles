@@ -31,7 +31,6 @@ awful.layout.layouts = {
 	-- awful.layout.suit.corner.sw,
 	-- awful.layout.suit.corner.se,
 }
--- }}}
 
 local box = wibox.container.background()
 local layoutbox_margin = wibox.container.margin()
@@ -59,8 +58,6 @@ box = wibox.container {
 		layoutbox,
 	},
 	layout = wibox.container.background,
-	-- shape_border_width = beautiful.border_width,
-	-- shape_border_color = beautiful.grey,
 	shape = gears.shape.rounded_rect,
 	bg = beautiful.grey,
 }

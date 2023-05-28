@@ -2,6 +2,7 @@ local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local menubar = require("menubar")
 
 local launcher = wibox.container {
 	{
@@ -30,8 +31,7 @@ launcher_container = wibox.container {
 	widget = wibox.container.background,
 	shape = gears.shape.rounded_rect,
 	buttons = awful.button({}, 1, function()
-		awful.spawn(string.format("%s/.local/bin/rofi_launcher", os.getenv("HOME")), false)
---		awful.spawn(string.format("mpv %s/sounds/sound.mp3", os.getenv("HOME")), false)
+		menubar.show()
 	end)
 }
 

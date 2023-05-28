@@ -44,8 +44,6 @@ clockbox = wibox.container {
 	},
 	layout = wibox.container.background,
 	shape = gears.shape.rounded_rect,
-	-- shape_border_width = beautiful.border_width,
-	-- shape_border_color = beautiful.bg_normal,
 	bg = beautiful.green,
 }
 

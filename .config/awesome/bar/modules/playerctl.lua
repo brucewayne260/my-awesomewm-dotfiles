@@ -78,7 +78,6 @@ playerctl_container = wibox.container {
 	shape = gears.shape.rounded_rect,
 	buttons = awful.button({}, 1, function()
 		awful.spawn("playerctl -p " .. player .. " play-pause", false)
---		awful.spawn(string.format("mpv %s/sounds/sound.mp3", os.getenv("HOME")), false)
 	end)
 }
 

@@ -39,15 +39,12 @@ keymapbox = wibox.container {
 	},
 	layout = wibox.container.background,
 	shape = gears.shape.rounded_rect,
-	-- shape_border_width = beautiful.border_width,
-	-- shape_border_color = beautiful.bg_normal,
 	fg = beautiful.fg_normal,
 	bg = beautiful.grey,
 }
 
 keymapbox_margin = wibox.container {
 	layout = wibox.container.margin,
-	bottom = 5,
 	keymapbox,
 }
 
@@ -55,7 +52,6 @@ keymapbox_container = wibox.container {
 	keymapbox_margin,
 	layout = wibox.container.background,
 	shape = gears.shape.rounded_rect,
-	bg = beautiful.grey,
 }
 
 keymapbox_container:connect_signal("button::press", function()

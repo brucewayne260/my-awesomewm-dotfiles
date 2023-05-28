@@ -31,7 +31,6 @@ powerlauncher_container = wibox.container {
 	shape = gears.shape.rounded_rect,
 	buttons = awful.button({}, 1, function()
 		awful.spawn(string.format("%s/.local/bin/rofi_powermenu", os.getenv("HOME")), false)
---		awful.spawn(string.format("mpv %s/sounds/sound.mp3", os.getenv("HOME")), false)
 	end)
 }
 

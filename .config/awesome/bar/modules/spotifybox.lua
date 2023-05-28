@@ -53,8 +53,6 @@ spotifybox = wibox.container {
 	},
 	layout = wibox.container.background,
 	shape = gears.shape.rounded_rect,
-	-- shape_border_width = beautiful.border_width,
-	-- shape_border_color = beautiful.bg_normal,
 	fg = beautiful.fg_normal,
 	bg = beautiful.green,
 }
@@ -146,8 +144,6 @@ spotifyicon_margin = wibox.container {
 		},
 		layout = wibox.container.background,
 		shape = gears.shape.rounded_rect,
-		-- shape_border_width = beautiful.border_width,
-		-- shape_border_color = beautiful.bg_normal,
 		fg = beautiful.fg_normal,
 		bg = beautiful.green,
 	},
@@ -160,7 +156,6 @@ spotifyicon_container = wibox.container {
 	layout = wibox.container.background,
 	buttons = awful.button({}, 1, function()
 		awful.spawn("playerctl -p spotify play-pause", false)
---		awful.spawn(string.format("mpv %s/sounds/sound.mp3", os.getenv("HOME")), false)
 	end)
 }
 

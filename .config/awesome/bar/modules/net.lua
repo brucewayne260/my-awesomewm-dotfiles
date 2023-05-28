@@ -69,8 +69,6 @@ netbox = wibox.container {
 	},
 	layout = wibox.container.background,
 	shape = gears.shape.rounded_rect,
-	-- shape_border_width = beautiful.border_width,
-	-- shape_border_color = beautiful.bg_normal,
 	fg = beautiful.black,
 }
 
@@ -86,7 +84,6 @@ netbox_container = wibox.container {
 	buttons = awful.button({}, 1,
 		function()
 			awful.spawn(vars.terminal .. " -e nmtui")
---			awful.spawn(string.format("mpv %s/sounds/sound.mp3", os.getenv("HOME")), false)
 		end)
 }
 
