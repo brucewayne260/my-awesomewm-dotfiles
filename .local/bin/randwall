@@ -1,0 +1,9 @@
+#!/bin/bash
+
+user=$1
+
+if [ -z "$user" ]; then
+	cp $(find "$HOME/.data/Pictures/" -name '*.png' -o -name '*.jpg' | shuf -n 1) $HOME/.wallpaper -v
+else
+	cp "$(find $user -name '*.png' -o -name '*.jpg' | shuf -n 1)" $HOME/.wallpaper -v
+fi
