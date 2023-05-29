@@ -29,9 +29,6 @@ powerlauncher_container = wibox.container {
 	powerlauncher_margin,
 	widget = wibox.container.background,
 	shape = gears.shape.rounded_rect,
-	buttons = awful.button({}, 1, function()
-		awful.spawn(string.format("%s/.local/bin/rofi_powermenu", os.getenv("HOME")), false)
-	end)
 }
 
 local pressed = function()
