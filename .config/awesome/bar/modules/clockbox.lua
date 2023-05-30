@@ -3,7 +3,7 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local awful = require("awful")
 
-local textclock = {
+local textclock = wibox.widget {
 	widget = wibox.widget.textclock,
 	format = '%H:%M'
 }
@@ -17,12 +17,21 @@ local pressed = function()
 	clockbox_container:set_bg(beautiful.transparent)
 	clockbox_margin:set_top(5)
 	clockbox_margin:set_bottom(0)
+	if textclock.format == '%H:%M' then
+		clockbox:set_bg(beautiful.green)
+	else
+		clockbox:set_bg(beautiful.blue)
+	end
 end
 
 local released = function()
-	clockbox_container:set_bg(beautiful.darkgreen)
 	clockbox_margin:set_top(0)
 	clockbox_margin:set_bottom(5)
+	if textclock.format == '%H:%M' then
+		clockbox_container:set_bg(beautiful.darkgreen)
+	else
+		clockbox_container:set_bg(beautiful.darkblue)
+	end
 end
 
 clockbox = wibox.container {
@@ -56,6 +65,13 @@ clockbox_container = wibox.container {
 	clockbox_margin,
 	layout = wibox.container.background,
 	shape = gears.shape.rounded_rect,
+	buttons = awful.button({}, 1, function()
+		if textclock.format == '%H:%M' then
+			textclock.format = '%a %b %d'
+		else
+			textclock.format = '%H:%M'
+		end
+	end),
 }
 
 clockbox_container:connect_signal("button::press", function()

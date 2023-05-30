@@ -12,7 +12,6 @@ require("bar.modules.keymapbox")
 require("bar.modules.membox")
 require("bar.modules.layoutbox-container")
 require("bar.modules.systray")
-require("bar.modules.datebox")
 require("bar.modules.clockbox")
 require("bar.modules.net")
 require("bar.modules.playerctl")
@@ -69,8 +68,6 @@ awful.screen.connect_for_each_screen(function(s)
 			membox_container,
 			sep,
 			clockbox_container,
-			sep,
-			datebox_container,
 		},
 	}
 
