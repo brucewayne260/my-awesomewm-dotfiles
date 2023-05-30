@@ -223,9 +223,9 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 
 -- Generate Awesome icon:
--- theme.awesome_icon = theme_assets.awesome_icon(
---     theme.menu_height, theme.bg_focus, theme.fg_focus
--- )
+theme.awesome_icon = theme_assets.awesome_icon(
+    theme.menu_height, theme.bg_focus, theme.fg_focus
+)
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.

@@ -8,11 +8,11 @@ local launcher = wibox.container {
 	{
 		{
 			widget = wibox.widget.imagebox,
-			image = beautiful.archicon,
+			image = beautiful.awesome_icon,
 		},
 		widget = wibox.container.margin,
-		top = 5,
-		bottom = 5,
+		top = 8,
+		bottom = 8,
 		left = 10,
 		right = 10,
 	},
