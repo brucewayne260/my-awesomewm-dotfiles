@@ -84,6 +84,10 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
+root.buttons(gears.table.join(
+    awful.button({ }, 1, function () menubar:hide() end)
+))
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
 
