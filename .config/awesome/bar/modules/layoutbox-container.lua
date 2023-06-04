@@ -3,14 +3,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
--- Create an imagebox widget which will contain an icon indicating which layout we're using.
--- We need one layoutbox per screen.
-local layoutbox = awful.widget.layoutbox(s)
-layoutbox:buttons(gears.table.join(
-	awful.button({ }, 1, function () awful.layout.inc( 1) end),
-	awful.button({ }, 3, function () awful.layout.inc(-1) end),
-	awful.button({ }, 4, function () awful.layout.inc( 1) end),
-	awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+local layoutbox = awful.widget.layoutbox()
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -19,7 +12,7 @@ awful.layout.layouts = {
 	-- awful.layout.suit.tile.left,
 	-- awful.layout.suit.tile.bottom,
 	-- awful.layout.suit.tile.top,
-	-- awful.layout.suit.fair,
+	awful.layout.suit.fair,
 	-- awful.layout.suit.fair.horizontal,
 	awful.layout.suit.spiral,
 	-- awful.layout.suit.spiral.dwindle,
@@ -71,6 +64,12 @@ layoutbox_container = wibox.container {
 	layoutbox_margin,
 	layout = wibox.container.background,
 	shape = gears.shape.rounded_rect,
+	buttons = (gears.table.join(
+		awful.button({ }, 1, function () awful.layout.inc( 1) end),
+		awful.button({ }, 3, function () awful.layout.inc(-1) end),
+		awful.button({ }, 4, function () awful.layout.inc( 1) end),
+		awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+
 }
 
 layoutbox_container:connect_signal("button::press", function()

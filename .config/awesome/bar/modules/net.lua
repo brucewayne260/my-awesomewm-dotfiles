@@ -43,8 +43,8 @@ local net_status, net_timer = awful.widget.watch(
 			netbox_margin:set_top(0)
 		else
 			wifi_icon:set_image(beautiful.wifi_goodicon)
-			netbox:set_bg(beautiful.blue)
-			netbox_container:set_bg(beautiful.darkblue)
+			netbox:set_bg(beautiful.green)
+			netbox_container:set_bg(beautiful.darkgreen)
 			netbox_margin:set_bottom(5)
 			netbox_margin:set_top(0)
 		end
@@ -60,11 +60,15 @@ netbox = wibox.container {
 			top = 8,
 			bottom = 8,
 			wifi_icon,
-		},			
+		},
 		{
-			layout = wibox.container.margin,
-			right = 10,
-			net,
+			{
+				layout = wibox.container.margin,
+				right = 10,
+				net,
+			},
+			layout = wibox.layout.constraint,
+			width = 100,
 		},
 	},
 	layout = wibox.container.background,

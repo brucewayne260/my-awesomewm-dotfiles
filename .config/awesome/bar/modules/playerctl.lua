@@ -51,8 +51,8 @@ local playerctl_update = function()
 			myplayer:set_text(player .. " ")
 			playerctlicon:set_image(beautiful.playicon)
 			released()
-			playerctl:set_bg(beautiful.blue)
-			playerctl_container:set_bg(beautiful.darkblue)
+			playerctl:set_bg(beautiful.yellow)
+			playerctl_container:set_bg(beautiful.darkyellow)
 			return
 		elseif string.match(stdout, "%S+") == "Paused" then
 			myplayer:set_text(player .. " ")

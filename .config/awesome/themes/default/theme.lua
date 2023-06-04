@@ -14,7 +14,7 @@ local awful = require("awful")
 
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
-local icons_path = os.getenv("HOME") .. "/.config/awesome/themes/default/icons/catppuccin/"
+local icons_path = os.getenv("HOME") .. "/.config/awesome/themes/default/icons/gruvbox/"
 
 local theme = {}
 
@@ -210,6 +210,10 @@ theme.wifi_midicon = icons_path .. "wifimid.png"
 theme.wifi_goodicon = icons_path .. "wifigood.png"
 theme.ethicon = icons_path .. "network.png"
 theme.nowifi = icons_path .. "wifi_slash.png"
+
+-- Menubar
+theme.menubar_border_width = theme.border_width
+theme.menubar_border_color = theme.blue
 
 -- Wallpaper
 theme.wallpaper = string.format("%s/.wallpaper",os.getenv("HOME"))

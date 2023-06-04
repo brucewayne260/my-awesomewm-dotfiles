@@ -52,41 +52,16 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibar
 
-local tasklist_buttons = gears.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  c:emit_signal(
-                                                      "request::activate",
-                                                      "tasklist",
-                                                      {raise = true}
-                                                  )
-                                              end
-                                          end),
-                     awful.button({ }, 3, function()
-                                              awful.menu.client_list({ theme = { width = 250 } })
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                          end))
-
 awful.screen.connect_for_each_screen(function(s)
-	-- Create a tasklist widget
-	s.mytasklist = awful.widget.tasklist {
-		screen  = s,
-		filter  = awful.widget.tasklist.filter.currenttags,
-		buttons = tasklist_buttons
+
+	menubar.geometry = {
+		x = s.geometry.width / 4,
+		y = s.geometry.height - 2 * beautiful.useless_gap - beautiful.wibox_height,
+		width = s.geometry.width / 2,
 	}
+
 end)
 -- }}}
-
-root.buttons(gears.table.join(
-    awful.button({ }, 1, function () menubar:hide() end)
-))
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
@@ -249,7 +224,10 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Rofi
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    awful.key({ modkey }, "p", function() awful.spawn(string.format("%s/.local/bin/rofi_launcher", os.getenv("HOME")), false) end,
+              {description = "show the menubar", group = "launcher"}),
+
+    awful.key({ modkey, "Shift" }, "p", function() awful.spawn(string.format("%s/.local/bin/rofi_powermenu", os.getenv("HOME")), false) end,
               {description = "show the menubar", group = "launcher"})
 
 )
@@ -367,4 +345,11 @@ awful.rules.rules = rules(
 -- Set keys
 root.keys(globalkeys)
 -- }}}
+
+-- Run garbage collector regularly to prevent memory leaks
+gears.timer {
+       timeout = 30,
+       autostart = true,
+       callback = function() collectgarbage() end
+}
 

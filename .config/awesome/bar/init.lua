@@ -18,6 +18,7 @@ require("bar.modules.playerctl")
 require("bar.modules.launcherbox")
 require("bar.modules.powermenu")
 require("bar.modules.mytags")
+require("bar.modules.mytasklist")
 
 awful.screen.connect_for_each_screen(function(s)
 
@@ -47,11 +48,9 @@ awful.screen.connect_for_each_screen(function(s)
 		expand = "none",
 		{
 			layout = wibox.layout.fixed.horizontal,
-			launcher_container,
+			netbox_container,
 			sep,
 			volumebox_container,
-			sep,
-			netbox_container,
 			sep,
 			playerctl_container,
 		},
@@ -63,6 +62,8 @@ awful.screen.connect_for_each_screen(function(s)
 		},
 		{
 			layout = wibox.layout.fixed.horizontal,
+			keymapbox_container,
+			sep,
 			cpubox_container,
 			sep,
 			membox_container,
@@ -88,13 +89,14 @@ awful.screen.connect_for_each_screen(function(s)
 		expand = "none",
 		{
 			layout = wibox.layout.fixed.horizontal,
+			launcher_container,
+			sep,
 			s.mytaglist,
 		},
 		s.mypromptbox,
+		-- s.mytasklist,
 		{
 			layout = wibox.layout.fixed.horizontal,
-			keymapbox_container,
-			sep,
 			systraybox_container,	
 			sep,
 			layoutbox_container,
