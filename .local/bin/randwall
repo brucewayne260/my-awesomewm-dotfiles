@@ -3,7 +3,7 @@
 user=$1
 
 if [ -z "$user" ]; then
-	cp $(find "$HOME/.data/Pictures/" -name '*.png' -o -name '*.jpg' | shuf -n 1) $HOME/.wallpaper -v
+	cp $(find "$HOME/.data/Pictures/" -name '*.png' -o -name '*.jpg' | shuf -n 1) $HOME/.wallpaper -v && feh --bg-fill --no-fehbg $HOME/.wallpaper
 else
-	cp "$(find $user -name '*.png' -o -name '*.jpg' | shuf -n 1)" $HOME/.wallpaper -v
+	cp "$(find $user -name '*.png' -o -name '*.jpg' | shuf -n 1)" $HOME/.wallpaper -v && feh --bg-fill --no-fehbg $HOME/.wallpaper
 fi
