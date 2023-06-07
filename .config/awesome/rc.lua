@@ -50,19 +50,6 @@ mymainmenu = awful.menu({ items = { { "hotkeys", function() hotkeys_popup.show_h
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- {{{ Wibar
-
-awful.screen.connect_for_each_screen(function(s)
-
-	menubar.geometry = {
-		x = s.geometry.width / 4,
-		y = s.geometry.height - 2 * beautiful.useless_gap - beautiful.wibox_height,
-		width = s.geometry.width / 2,
-	}
-
-end)
--- }}}
-
 -- {{{ Key bindings
 globalkeys = gears.table.join(
 
@@ -224,7 +211,7 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Rofi
-    awful.key({ modkey }, "p", function() awful.spawn(string.format("%s/.local/bin/rofi_launcher", os.getenv("HOME")), false) end,
+    awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
     awful.key({ modkey, "Shift" }, "p", function() awful.spawn(string.format("%s/.local/bin/rofi_powermenu", os.getenv("HOME")), false) end,

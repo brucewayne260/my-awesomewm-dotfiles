@@ -11,6 +11,7 @@ local gears = require("gears")
 local naughty = require("naughty")
 local wibox = require("wibox")
 local awful = require("awful")
+local menubar = require("menubar")
 
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
@@ -210,9 +211,14 @@ theme.wifi_goodicon = icons_path .. "wifigood.png"
 theme.ethicon = icons_path .. "network.png"
 theme.nowifi = icons_path .. "wifi_slash.png"
 
--- awful.screen.connect_for_each_screen(function(s)
---     gears.wallpaper.fit(nil, s, "black")
--- end)
+awful.screen.connect_for_each_screen(function(s)
+    -- gears.wallpaper.fit(nil, s, "black")
+    menubar.geometry = {
+        x = s.geometry.width / 4,
+        y = s.geometry.height - 2 * theme.useless_gap - theme.wibox_height,
+        width = s.geometry.width / 2,
+    }
+end)
 
 -- Menubar
 theme.menubar_border_width = theme.border_width

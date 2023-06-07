@@ -31,6 +31,7 @@ powerlauncher_container = wibox.container {
 	shape = gears.shape.rounded_rect,
 	buttons = awful.button({}, 1, function()
 		awful.spawn(string.format("%s/.local/bin/rofi_powermenu", os.getenv("HOME")), false)
+--		awful.spawn(string.format("mpv %s/sounds/sound.mp3", os.getenv("HOME")), false)
 	end)
 }
 
@@ -49,16 +50,19 @@ end
 local ispress = false
 powerlauncher_container:connect_signal("button::press", function()
 	pressed()
+	-- awful.spawn(string.format("ffmpeg -i %s/sounds/press.mp3 -f alsa default", os.getenv("HOME")), false)
 	ispress = true
 end)
 powerlauncher_container:connect_signal("mouse::leave", function()
 	released()
 	if ispress then
+		-- awful.spawn(string.format("ffmpeg -i %s/sounds/release.mp3 -f alsa default", os.getenv("HOME")), false)
 		ispress = false
 	end
 end)
 powerlauncher_container:connect_signal("button::release", function()
 	released()
+	-- awful.spawn(string.format("ffmpeg -i %s/sounds/release.mp3 -f alsa default", os.getenv("HOME")), false)
 	ispress = false
 end)
 
