@@ -3,7 +3,18 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local awful = require("awful")
 
-local player = "brave"
+local player = ""
+local command = [[ bash -c "playerctl --list-all | awk -F\. '{print $1}' | sed -n 1p" ]]
+local get_player = function()
+	awful.spawn.easy_async(command,
+	function(stdout)
+		if string.match(stdout, "%S+") == nil then
+			return
+		else
+			player = string.match(stdout, "%S+")
+		end
+	end)
+end
 local playerctlicon = wibox.widget.imagebox()
 playerctl_container = wibox.container.background()
 
@@ -45,6 +56,7 @@ local released = function()
 end
 
 local playerctl_update = function()
+	get_player()
 	awful.spawn.easy_async("playerctl -p " .. player .. " status",
 	function(stdout)
 		if string.match(stdout, "%S+") == "Playing" then
@@ -62,11 +74,11 @@ local playerctl_update = function()
 			playerctl_container:set_bg(beautiful.darkred)
 			return
 		else
-			myplayer:set_text(player .. " ")
-			playerctlicon:set_image(beautiful.stopicon)
+			myplayer:set_text("")
+			playerctlicon:set_image()
 			released()
-			playerctl:set_bg(beautiful.red)
-			playerctl_container:set_bg(beautiful.darkred)
+			playerctl:set_bg()
+			playerctl_container:set_bg()
 			return
 		end
 	end)

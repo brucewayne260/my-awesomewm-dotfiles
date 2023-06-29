@@ -33,7 +33,7 @@ theme.yellow = xrdb.color11
 theme.blue = xrdb.color12
 theme.magenta = xrdb.color13
 theme.cyan = xrdb.color14
-theme.grey = xrdb.color8
+theme.grey = xrdb.color7
 
 theme.darkgreen = xrdb.color2
 theme.darkred = xrdb.color1
@@ -41,7 +41,7 @@ theme.darkyellow = xrdb.color3
 theme.darkblue = xrdb.color4
 theme.darkmagenta = xrdb.color5
 theme.darkcyan = xrdb.color6
-theme.darkgrey = xrdb.color7
+theme.darkgrey = xrdb.color8
 
 theme.bg_normal     = theme.background
 theme.bg_focus      = theme.black

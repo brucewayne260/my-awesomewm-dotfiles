@@ -5,7 +5,7 @@
 
 ! black
 *.color0:       #232a2e
-*.color8:       #7a8478
+*.color8:       #515850
 
 ! red
 *.color1:       #995455
@@ -32,5 +32,5 @@
 *.color14:      #83c092
 
 ! white
-*.color7:       #515850
+*.color7:       #7a8478
 *.color15:      #d3c6aa
