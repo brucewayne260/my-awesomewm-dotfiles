@@ -8,7 +8,7 @@ local command = [[ bash -c "playerctl --list-all | awk -F\. '{print $1}' | sed -
 local get_player = function()
 	awful.spawn.easy_async(command,
 	function(stdout)
-		if string.match(stdout, "%S+") == nil then
+		if (string.match(stdout, "%S+") == nil) or (string.match(stdout, "%S+") == "spotify") then
 			return
 		else
 			player = string.match(stdout, "%S+")
